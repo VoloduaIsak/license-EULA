@@ -1,1 +1,1 @@
-SERVER_HAS_LICENSE = true 
+SERVER_HAS_LICENSE = false
