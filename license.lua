@@ -1,1 +1,1 @@
-SERVER_HAS_LICENSE = false
+_G.SERVER_HAS_LICENSE = true
