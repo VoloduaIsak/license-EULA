@@ -1,20 +1,16 @@
-local allowed_ips = {
-    --["46.174.53.227:27015"] = false
-    ["192.168.1.1:27015"] = true,
-    --["0.0.0.0:0"] = true
-}
-
 local current_ip = game.GetIPAddress()
 
-if not allowed_ips[current_ip] then
-    print("--------------------------------------------------")
-    print("ОШИБКА: Лицензия для IP " .. current_ip .. " не найдена!")
-    print("Свяжитесь с владельцем: VoloduaIsak")
-    print("--------------------------------------------------")
+local allowed_ips = {
+    --["46.174.53.227:27015"] = true,
+    ["127.0.0.1:27015"] = true,
+    --["loopback"] = true
+}
 
-    timer.Simple(5, function()
-        RunConsoleCommand("changelevel", "rp_rps_map")
-    end)
+if allowed_ips[current_ip] then
+    SERVER_HAS_LICENSE = true 
+    
+    print("[License] Сервер " .. current_ip .. " успешно верифицирован!")
 else
-    print("[License] Лицензия подтверждена для сервера: " .. current_ip)
+    SERVER_HAS_LICENSE = false
+    print("[License] Сервер " .. current_ip .. " отсутствует в базе.")
 end
